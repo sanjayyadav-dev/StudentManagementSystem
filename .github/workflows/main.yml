@@ -1,0 +1,43 @@
+name: Student Management CI/CD
+
+on:
+  push:
+    branches:
+      - development
+      - staging
+      - main
+
+jobs:
+
+  development:
+    if: github.ref == 'refs/heads/development'
+    runs-on: ubuntu-latest
+    environment: Development
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - run: echo "Deploying to Development"
+
+  staging:
+    if: github.ref == 'refs/heads/staging'
+    runs-on: ubuntu-latest
+    environment: Staging
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - run: echo "Deploying to Staging"
+
+  production:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: Production
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - run: echo "Deploying to Production"
