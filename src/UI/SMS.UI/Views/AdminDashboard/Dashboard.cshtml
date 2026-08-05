@@ -1,0 +1,373 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    .stat-card {
+        border: none;
+        border-radius: 16px;
+        padding: 24px;
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        transition: transform 0.25s ease;
+    }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card .stat-icon {
+            position: absolute;
+            right: 16px;
+            top: 16px;
+            font-size: 42px;
+            opacity: 0.25;
+        }
+
+        .stat-card .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .stat-card .stat-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+    .bg-grad-purple {
+        background: linear-gradient(135deg, #4e54c8, #8f94fb);
+    }
+
+    .bg-grad-green {
+        background: linear-gradient(135deg, #11998e, #38ef7d);
+    }
+
+    .bg-grad-orange {
+        background: linear-gradient(135deg, #f2994a, #f2c94c);
+    }
+
+    .bg-grad-pink {
+        background: linear-gradient(135deg, #eb3349, #f45c43);
+    }
+
+    .panel-card {
+        border: none;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+        .panel-card .card-header {
+            background: #fff;
+            border-bottom: 1px solid #f0f0f5;
+            border-radius: 16px 16px 0 0 !important;
+            font-weight: 600;
+            padding: 18px 22px;
+        }
+
+    .table-clean thead th {
+        border-top: none;
+        border-bottom: 2px solid #f0f0f5;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        color: #8a8fb9;
+        font-weight: 600;
+    }
+
+    .table-clean td {
+        vertical-align: middle;
+        border-color: #f5f5fa;
+    }
+
+    .avatar-circle {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #4e54c8, #8f94fb);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 0.85rem;
+    }
+
+    .badge-status {
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+
+    .badge-active {
+        background: rgba(46,196,108,0.12);
+        color: #2ec46c;
+    }
+
+    .badge-inactive {
+        background: rgba(240,82,82,0.12);
+        color: #f05252;
+    }
+
+    .activity-item {
+        display: flex;
+        gap: 14px;
+        padding: 14px 0;
+        border-bottom: 1px solid #f5f5fa;
+    }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+    .activity-dot {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-size: 14px;
+    }
+
+    .quick-action-btn {
+        border: none;
+        border-radius: 14px;
+        padding: 20px 14px;
+        text-align: center;
+        width: 100%;
+        background: #fff;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+        transition: transform 0.2s ease;
+        text-decoration: none;
+        color: #333;
+        display: block;
+    }
+
+        .quick-action-btn:hover {
+            transform: translateY(-4px);
+            color: #4e54c8;
+        }
+
+        .quick-action-btn i {
+            font-size: 26px;
+            margin-bottom: 10px;
+            display: block;
+            color: #4e54c8;
+        }
+</style>
+
+<div class="container-fluid py-4">
+
+    <!-- Page Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h4 class="fw-bold mb-1">Dashboard</h4>
+            <p class="text-muted mb-0 small">Welcome back! Yahan aapke system ka overview hai.</p>
+        </div>
+        <div class="text-muted small">
+            <i class="fa-regular fa-calendar me-1"></i> @DateTime.Now.ToString("dddd, dd MMM yyyy")
+        </div>
+    </div>
+
+    <!-- Stat Cards -->
+    <div class="row g-4 mb-4">
+        <div class="col-xl-3 col-md-6">
+            <div class="stat-card bg-grad-purple">
+                <i class="fa-solid fa-users stat-icon"></i>
+                <div class="stat-label">Total Employees</div>
+                <div class="stat-value">248</div>
+                <div class="small mt-2"><i class="fa-solid fa-arrow-up me-1"></i>12% from last month</div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="stat-card bg-grad-green">
+                <i class="fa-solid fa-diagram-project stat-icon"></i>
+                <div class="stat-label">Active Projects</div>
+                <div class="stat-value">37</div>
+                <div class="small mt-2"><i class="fa-solid fa-arrow-up me-1"></i>4 new this week</div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="stat-card bg-grad-orange">
+                <i class="fa-solid fa-user-shield stat-icon"></i>
+                <div class="stat-label">Active Users</div>
+                <div class="stat-value">186</div>
+                <div class="small mt-2"><i class="fa-solid fa-circle-check me-1"></i>Logged in today</div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="stat-card bg-grad-pink">
+                <i class="fa-solid fa-building stat-icon"></i>
+                <div class="stat-label">Departments</div>
+                <div class="stat-value">12</div>
+                <div class="small mt-2"><i class="fa-solid fa-circle-info me-1"></i>Across organization</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="row g-3 mb-4">
+        <div class="col-6 col-md-3">
+            <a href="/Employee/Create" class="quick-action-btn">
+                <i class="fa-solid fa-user-plus"></i>
+                <span class="small fw-semibold">Add Employee</span>
+            </a>
+        </div>
+        <div class="col-6 col-md-3">
+            <a href="/Employee/Index" class="quick-action-btn">
+                <i class="fa-solid fa-list"></i>
+                <span class="small fw-semibold">View Employees</span>
+            </a>
+        </div>
+        <div class="col-6 col-md-3">
+            <a href="#" class="quick-action-btn">
+                <i class="fa-solid fa-diagram-project"></i>
+                <span class="small fw-semibold">Manage Projects</span>
+            </a>
+        </div>
+        <div class="col-6 col-md-3">
+            <a href="#" class="quick-action-btn">
+                <i class="fa-solid fa-gear"></i>
+                <span class="small fw-semibold">Settings</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <!-- Recent Employees Table -->
+        <div class="col-lg-8">
+            <div class="panel-card h-100">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <span>Recent Employees</span>
+                    <a href="/Employee/Index" class="small text-decoration-none">View All <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-clean mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Employee</th>
+                                    <th>Designation</th>
+                                    <th>Joining Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="avatar-circle">RS</div>
+                                            <div>
+                                                <div class="fw-semibold">Rahul Sharma</div>
+                                                <div class="small text-muted">EMP0001</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Software Engineer</td>
+                                    <td>31 Jul 2026</td>
+                                    <td><span class="badge-status badge-active">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="avatar-circle">PK</div>
+                                            <div>
+                                                <div class="fw-semibold">Priya Kapoor</div>
+                                                <div class="small text-muted">EMP0002</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>HR Manager</td>
+                                    <td>28 Jul 2026</td>
+                                    <td><span class="badge-status badge-active">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="avatar-circle">AV</div>
+                                            <div>
+                                                <div class="fw-semibold">Amit Verma</div>
+                                                <div class="small text-muted">EMP0003</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>UI/UX Designer</td>
+                                    <td>20 Jul 2026</td>
+                                    <td><span class="badge-status badge-inactive">Inactive</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="avatar-circle">SN</div>
+                                            <div>
+                                                <div class="fw-semibold">Sneha Nair</div>
+                                                <div class="small text-muted">EMP0004</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>QA Engineer</td>
+                                    <td>15 Jul 2026</td>
+                                    <td><span class="badge-status badge-active">Active</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="col-lg-4">
+            <div class="panel-card h-100">
+                <div class="card-header">Recent Activity</div>
+                <div class="card-body">
+                    <div class="activity-item">
+                        <div class="activity-dot" style="background:rgba(78,84,200,0.12);color:#4e54c8;">
+                            <i class="fa-solid fa-user-plus"></i>
+                        </div>
+                        <div>
+                            <div class="small fw-semibold">New employee added</div>
+                            <div class="small text-muted">Rahul Sharma joined as Software Engineer</div>
+                            <div class="small text-muted">2 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-dot" style="background:rgba(46,196,108,0.12);color:#2ec46c;">
+                            <i class="fa-solid fa-diagram-project"></i>
+                        </div>
+                        <div>
+                            <div class="small fw-semibold">Project mapped</div>
+                            <div class="small text-muted">3 employees mapped to Project Alpha</div>
+                            <div class="small text-muted">5 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-dot" style="background:rgba(255,176,32,0.12);color:#ffb020;">
+                            <i class="fa-solid fa-pen"></i>
+                        </div>
+                        <div>
+                            <div class="small fw-semibold">Employee updated</div>
+                            <div class="small text-muted">Priya Kapoor's bank details updated</div>
+                            <div class="small text-muted">1 day ago</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-dot" style="background:rgba(240,82,82,0.12);color:#f05252;">
+                            <i class="fa-solid fa-user-slash"></i>
+                        </div>
+                        <div>
+                            <div class="small fw-semibold">Employee deactivated</div>
+                            <div class="small text-muted">Amit Verma's account marked inactive</div>
+                            <div class="small text-muted">2 days ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

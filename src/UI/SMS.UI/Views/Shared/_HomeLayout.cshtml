@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewBag.Title</title>
+    <!-- Bootstrap CSS -->
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Toastr CSS (needed for an.success/error/info/warning toasts) -->
+    <link href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css" rel="stylesheet">
+
+    <style>
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .navbar {
+                background: linear-gradient(90deg, #4e54c8, #8f94fb);
+            }
+
+            .nav-link {
+                color: #fff !important;
+                margin-right: 12px;
+                font-weight: 500;
+            }
+
+                .nav-link:hover {
+                    text-decoration: underline;
+                }
+
+            .btn-login {
+                background-color: #fff;
+                color: #4e54c8;
+                font-weight: 600;
+                border-radius: 20px;
+                padding: 6px 22px;
+            }
+
+                .btn-login:hover {
+                    background-color: #e6e6ff;
+                }
+
+            .navbar-brand img {
+                height: 40px;
+            }
+
+            .footer {
+                background: linear-gradient(90deg, #4e54c8, #8f94fb);
+            }
+
+            .footer-title {
+                color: #fff;
+                margin-bottom: 15px;
+                font-weight: 600;
+            }
+
+            .footer ul li {
+                margin-bottom: 8px;
+            }
+
+                .footer ul li a {
+                    color: #e6e6ff;
+                    text-decoration: none;
+                }
+
+                    .footer ul li a:hover {
+                        text-decoration: underline;
+                        color: #fff;
+                    }
+
+            .footer-bottom {
+                background: rgba(0,0,0,0.15);
+            }
+
+            /* Optional: Add spacing around main content */
+            .main-content {
+                padding-top: 0px; /* space below navbar */
+                padding-bottom: 60px; /* space above footer */
+            }
+
+            .school-name {
+                font-family: "Times New Roman", Times, serif;
+                font-size: 22px;
+                font-weight: 600;
+            }
+
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark shadow fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <img src="~/image/logo/victor1.png" alt="Logo"
+                     style="height:45px;width:45px;border-radius:50%;" />
+
+                <span class="school-name">Victor Public School</span>
+            </a>
+
+
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarMain">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="AboutUs" asp-action="About">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="ContactUs" asp-action="Contact">ContactUs</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Web Design</a></li>
+                            <li><a class="dropdown-item" href="#">Development</a></li>
+                            <li><a class="dropdown-item" href="#">SEO</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-login" href="/Auth/Login">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        @RenderBody()
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-5">
+        <div class="container py-5">
+            <div class="row">
+
+                <!-- Logo & About -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <img src="~/image/logo/handlogo.png" class="rounded-5 bg-light" alt="Logo" style="height:40px;">
+                    <p class="text-light">
+                        We build modern, responsive, and user-friendly websites to grow your business.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Login</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">Services</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Web Design</a></li>
+                        <li><a href="#">Development</a></li>
+                        <li><a href="#">SEO</a></li>
+                        <li><a href="#">Digital Marketing</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">Contact</h5>
+                    <p class="text-light mb-1">📍 New Delhi, India</p>
+                    <p class="text-light mb-1">📧 info@example.com</p>
+                    <p class="text-light">📞 +91 98765 43210</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="footer-bottom text-center py-3">
+            <p class="mb-0 text-light">© 2026 YourCompany. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+         SCRIPT LOADING ORDER MATTERS:
+         1. jQuery        -> needed by site.js and page scripts ($ ...)
+         2. Bootstrap JS   -> needed by site.js (bootstrap.Modal)
+         3. Toastr         -> needed by site.js (toastr.options, an.success/error)
+         4. site.js        -> defines btnLdr, an, mdlA, bm, formatDate, etc.
+         5. Scripts section -> page-specific scripts (e.g. Login.cshtml)
+                               run LAST, after everything they depend on
+                               is already loaded.
+    ============================================================ -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.js"></script>
+    <script src="~/js/site.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

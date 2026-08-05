@@ -1,0 +1,120 @@
+﻿@{
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+    <style>
+        .hero-bg {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+            .card-hover:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            }
+    </style>
+<body class="bg-gray-50 font-sans">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <h1 class="text-3xl font-bold text-indigo-600">Quick<span class="text-gray-800">SMS</span></h1>
+            <div class="hidden md:flex gap-8 text-gray-700 font-medium">
+                <a href="#" class="hover:text-indigo-600">Home</a>
+                <a href="#" class="hover:text-indigo-600">Features</a>
+                <a href="#" class="hover:text-indigo-600">Pricing</a>
+                <a href="#" class="hover:text-indigo-600">API</a>
+                <a href="#" class="hover:text-indigo-600">Contact</a>
+            </div>
+            <button class="bg-indigo-600 text-white px-6 py-2.5 rounded-full font-semibold hover:bg-indigo-700 transition">
+                Login
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg text-white py-24">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-5xl md:text-6xl font-bold leading-tight">
+                    Instant SMS Delivery<br>at Lightning Speed
+                </h2>
+                <p class="mt-6 text-xl text-indigo-100">
+                    Send bulk SMS, promotional messages, OTPs & transactional SMS with 99.9% delivery rate.
+                </p>
+                <div class="mt-8 flex gap-4">
+                    <button class="bg-white text-indigo-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition">
+                        Start Free Trial
+                    </button>
+                    <button class="border-2 border-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/10 transition">
+                        Watch Demo
+                    </button>
+                </div>
+                <div class="mt-10 flex items-center gap-8">
+                    <div>
+                        <p class="text-3xl font-bold">10L+</p>
+                        <p class="text-sm">SMS Sent Daily</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-bold">5000+</p>
+                        <p class="text-sm">Happy Clients</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-bold">99.9%</p>
+                        <p class="text-sm">Delivery Rate</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hidden md:block">
+                <img src="https://picsum.photos/700/500?random=1"
+                     alt="SMS Dashboard"
+                     class="rounded-2xl shadow-2xl border border-white/20">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">Powerful Features</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-8 rounded-2xl card-hover">
+                    <i class="fa-solid fa-bolt text-4xl text-indigo-600 mb-4"></i>
+                    <h3 class="text-2xl font-semibold">Ultra Fast Delivery</h3>
+                    <p class="text-gray-600 mt-3">Messages delivered within seconds with DLT compliant routes.</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-2xl card-hover">
+                    <i class="fa-solid fa-users text-4xl text-indigo-600 mb-4"></i>
+                    <h3 class="text-2xl font-semibold">Bulk SMS</h3>
+                    <p class="text-gray-600 mt-3">Send lakhs of messages in one click with smart grouping.</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-2xl card-hover">
+                    <i class="fa-solid fa-shield-halved text-4xl text-indigo-600 mb-4"></i>
+                    <h3 class="text-2xl font-semibold">Secure & Reliable</h3>
+                    <p class="text-gray-600 mt-3">Bank-grade security with OTP & Transactional SMS.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="bg-indigo-600 py-16 text-white">
+        <div class="max-w-4xl mx-auto text-center px-6">
+            <h2 class="text-4xl font-bold">Ready to Boost Your Business?</h2>
+            <p class="mt-4 text-xl">Get started in under 2 minutes</p>
+            <button class="mt-8 bg-white text-indigo-600 px-10 py-4 rounded-full text-xl font-bold hover:scale-105 transition">
+                Create Free Account →
+            </button>
+        </div>
+    </section>
+    </body>
+
+  @*   <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p>© 2026 QuickSMS - Made with ❤️ for your business</p>
+        </div>
+    </footer> *@

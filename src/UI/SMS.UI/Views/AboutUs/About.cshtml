@@ -1,0 +1,228 @@
+﻿@{
+    ViewData["Title"] = "About Us";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<style>
+    .hero-about {
+        background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+        border-radius: 16px;
+        padding: 60px 40px;
+        color: #fff;
+        margin-bottom: 40px;
+    }
+
+    .icon-box {
+        width: 60px;
+        height: 60px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+
+    .bg-soft-primary {
+        background: rgba(67, 97, 238, 0.1);
+        color: #4361ee;
+    }
+
+    .bg-soft-success {
+        background: rgba(46, 196, 108, 0.1);
+        color: #2ec46c;
+    }
+
+    .bg-soft-warning {
+        background: rgba(255, 176, 32, 0.1);
+        color: #ffb020;
+    }
+
+    .bg-soft-danger {
+        background: rgba(240, 82, 82, 0.1);
+        color: #f05252;
+    }
+
+    .stat-card {
+        text-align: center;
+        padding: 24px;
+        border-radius: 14px;
+        background: #fff;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        transition: transform 0.25s ease;
+    }
+
+        .stat-card:hover {
+            transform: translateY(-6px);
+        }
+
+    .stat-number {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #4361ee;
+    }
+
+    .team-card {
+        border: none;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        transition: transform 0.25s ease;
+    }
+
+        .team-card:hover {
+            transform: translateY(-6px);
+        }
+
+    .team-img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+    }
+
+    .timeline-item {
+        border-left: 3px solid #4361ee;
+        padding-left: 24px;
+        padding-bottom: 30px;
+        position: relative;
+    }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #4361ee;
+        }
+</style>
+
+<div class="container py-4">
+
+    <!-- Hero Section -->
+    <div class="hero-about text-center" style="margin-top:80px">
+        <h1 class="fw-bold mb-3">About SMS</h1>
+        <p class="lead mb-0" style="max-width: 700px; margin: 0 auto; opacity: 0.9;">
+            SMS (Staff Management System) ko banaya gaya hai ek simple, secure aur reliable
+            employee &amp; project management solution dene ke liye — jo companies ke roz ke kaam ko aasan banata hai.
+        </p>
+    </div>
+
+    <!-- Mission / Vision -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-6">
+            <div class="p-4 h-100 bg-white rounded-4 shadow-sm">
+                <div class="icon-box bg-soft-primary">
+                    <i class="fa-solid fa-bullseye"></i>
+                </div>
+                <h4 class="fw-bold">Our Mission</h4>
+                <p class="text-muted mb-0">
+                    Har organization ko ek powerful, easy-to-use platform dena jisse employee data,
+                    roles aur project mapping bina kisi complexity ke manage ho sake.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="p-4 h-100 bg-white rounded-4 shadow-sm">
+                <div class="icon-box bg-soft-success">
+                    <i class="fa-solid fa-eye"></i>
+                </div>
+                <h4 class="fw-bold">Our Vision</h4>
+                <p class="text-muted mb-0">
+                    Ek aisi system banana jo scale kar sake — chhoti team se lekar
+                    enterprise level tak — bina performance ya security compromise kiye.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="row g-4 mb-5">
+        <div class="col-6 col-md-3">
+            <div class="stat-card">
+                <div class="stat-number">500+</div>
+                <div class="text-muted small">Employees Managed</div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="stat-card">
+                <div class="stat-number">50+</div>
+                <div class="text-muted small">Active Projects</div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="stat-card">
+                <div class="stat-number">99.9%</div>
+                <div class="text-muted small">Uptime</div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="stat-card">
+                <div class="stat-number">24/7</div>
+                <div class="text-muted small">Support</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- What We Offer -->
+    <h3 class="fw-bold text-center mb-4">What We Offer</h3>
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="p-4 h-100 bg-white rounded-4 shadow-sm">
+                <div class="icon-box bg-soft-primary">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+                <h5 class="fw-bold">Employee Management</h5>
+                <p class="text-muted mb-0 small">
+                    Complete employee lifecycle — onboarding se lekar documents, banking details tak, sab ek jagah.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-4 h-100 bg-white rounded-4 shadow-sm">
+                <div class="icon-box bg-soft-warning">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h5 class="fw-bold">Role-Based Security</h5>
+                <p class="text-muted mb-0 small">
+                    JWT-based authentication aur role-based access control — data sirf sahi logon tak pahunche.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-4 h-100 bg-white rounded-4 shadow-sm">
+                <div class="icon-box bg-soft-danger">
+                    <i class="fa-solid fa-diagram-project"></i>
+                </div>
+                <h5 class="fw-bold">Project Mapping</h5>
+                <p class="text-muted mb-0 small">
+                    Employees ko projects se map karo, roles assign karo, aur progress track karo real-time.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Journey / Timeline -->
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h3 class="fw-bold text-center mb-4">Our Journey</h3>
+
+            <div class="timeline-item">
+                <h6 class="fw-bold mb-1">2024 — The Idea</h6>
+                <p class="text-muted small mb-0">SMS ka concept banaya gaya taaki manual employee tracking ko replace kiya ja sake.</p>
+            </div>
+            <div class="timeline-item">
+                <h6 class="fw-bold mb-1">2025 — First Release</h6>
+                <p class="text-muted small mb-0">Core employee aur role management features ke saath platform launch hua.</p>
+            </div>
+            <div class="timeline-item" style="border-left: 3px solid #ddd;">
+                <div style="position:absolute;left:-9px;top:0;width:15px;height:15px;border-radius:50%;background:#ddd;"></div>
+                <h6 class="fw-bold mb-1">2026 — Growing Strong</h6>
+                <p class="text-muted small mb-0">Security aur scalability me continuous improvement, naye features ke saath.</p>
+            </div>
+        </div>
+    </div>
+
+</div>

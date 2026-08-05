@@ -1,0 +1,431 @@
+﻿@model SMS.UI.Models.EmployeeModel.CreateEmployeeRequest
+
+@{
+    ViewData["Title"] = "Add New Employee";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!-- Flatpickr (date picker) CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+<style>
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+    }
+
+        .page-header h4 {
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+    .breadcrumb-mini a {
+        color: #8a8fb9;
+        text-decoration: none;
+    }
+
+        .breadcrumb-mini a:hover {
+            color: #4e54c8;
+        }
+
+    .form-card {
+        border: none;
+        border-radius: 18px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+        overflow: hidden;
+    }
+
+    .form-card-header {
+        background: linear-gradient(135deg, #4e54c8, #8f94fb);
+        color: #fff;
+        padding: 26px 32px;
+    }
+
+        .form-card-header h5 {
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .form-card-header p {
+            margin: 0;
+            opacity: 0.85;
+            font-size: 0.85rem;
+        }
+
+    .form-card-body {
+        padding: 32px;
+    }
+
+    .section-block {
+        margin-bottom: 32px;
+    }
+
+    .section-heading {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+        .section-heading .icon-badge {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(78,84,200,0.1);
+            color: #4e54c8;
+            font-size: 14px;
+        }
+
+        .section-heading h6 {
+            margin: 0;
+            font-weight: 700;
+            color: #333;
+        }
+
+    .form-label {
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: #555;
+        margin-bottom: 6px;
+    }
+
+        .form-label .req {
+            color: #f05252;
+        }
+
+    .form-control, .form-select {
+        border-radius: 10px;
+        border: 1px solid #e5e7f2;
+        padding: 10px 14px;
+        font-size: 0.9rem;
+        background: #fbfbfe;
+    }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #4e54c8;
+            box-shadow: 0 0 0 3px rgba(78,84,200,0.12);
+            background: #fff;
+        }
+
+    .login-switch-box {
+        background: #f7f8fd;
+        border: 1px dashed #d9dcf2;
+        border-radius: 12px;
+        padding: 16px 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+    }
+
+        .login-switch-box .form-check-input {
+            width: 42px;
+            height: 22px;
+        }
+
+            .login-switch-box .form-check-input:checked {
+                background-color: #4e54c8;
+                border-color: #4e54c8;
+            }
+
+    .form-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+        padding-top: 16px;
+        border-top: 1px solid #f0f0f5;
+    }
+
+    .btn-reset-clean {
+        border-radius: 10px;
+        padding: 10px 24px;
+        font-weight: 600;
+        border: 1px solid #e5e7f2;
+        background: #fff;
+        color: #666;
+    }
+
+        .btn-reset-clean:hover {
+            background: #f4f5fa;
+        }
+
+    .btn-save-grad {
+        border-radius: 10px;
+        padding: 10px 28px;
+        font-weight: 600;
+        border: none;
+        background: linear-gradient(135deg, #4e54c8, #8f94fb);
+        color: #fff;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+        .btn-save-grad:hover {
+            background: linear-gradient(135deg, #3f45b0, #7c81f0);
+            color: #fff;
+        }
+
+        .btn-save-grad:disabled {
+            opacity: 0.7;
+        }
+</style>
+
+<div class="page-header">
+    <div>
+        <h4>Add New Employee</h4>
+        <nav class="breadcrumb-mini small">
+            <a asp-controller="AdminDashboard" asp-action="Dashboard">Dashboard</a>
+            <span class="mx-1 text-muted">/</span>
+            <a asp-controller="Employee" asp-action="Index">Employees</a>
+            <span class="mx-1 text-muted">/</span>
+            <span class="text-muted">Create</span>
+        </nav>
+    </div>
+    <a asp-controller="Employee" asp-action="Index" class="btn btn-reset-clean">
+        <i class="fa-solid fa-arrow-left me-1"></i> Back to List
+    </a>
+</div>
+
+<div class="form-card">
+    <div class="form-card-header">
+        <h5><i class="fa-solid fa-user-plus me-2"></i>Employee Details</h5>
+        <p>Employee ki puri jaankari bharein — sabhi * fields required hain</p>
+    </div>
+
+    <div class="form-card-body">
+
+        <form id="employeeForm">
+
+            <!-- Personal Information -->
+            <div class="section-block">
+                <div class="section-heading">
+                    <div class="icon-badge"><i class="fa-solid fa-id-card"></i></div>
+                    <h6>Personal Information</h6>
+                </div>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label class="form-label">First Name <span class="req">*</span></label>
+                        <input class="form-control" id="EmpFName" placeholder="e.g. Rahul" />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Middle Name</label>
+                        <input class="form-control" id="EmpMName" placeholder="Optional" />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Last Name <span class="req">*</span></label>
+                        <input class="form-control" id="EmpLName" placeholder="e.g. Sharma" />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Date Of Birth <span class="req">*</span></label>
+                        <input type="text" class="form-control" id="EmpDOB" placeholder="Select date" autocomplete="off" />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Aadhar <span class="req">*</span></label>
+                        <input class="form-control" maxlength="12" id="EmpAadhar" placeholder="12-digit number" />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">PAN <span class="req">*</span></label>
+                        <input class="form-control text-uppercase" maxlength="10" id="EmpPAN" placeholder="ABCDE1234F" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="section-block">
+                <div class="section-heading">
+                    <div class="icon-badge"><i class="fa-solid fa-address-book"></i></div>
+                    <h6>Contact Information</h6>
+                </div>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Email <span class="req">*</span></label>
+                        <input type="email" class="form-control" id="EmpEmail" placeholder="employee@example.com" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Contact <span class="req">*</span></label>
+                        <input class="form-control" maxlength="10" id="EmpContact" placeholder="10-digit mobile number" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Employment Details -->
+            <div class="section-block">
+                <div class="section-heading">
+                    <div class="icon-badge"><i class="fa-solid fa-briefcase"></i></div>
+                    <h6>Employment Details</h6>
+                </div>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label class="form-label">Designation <span class="req">*</span></label>
+                        <select class="form-select" id="EmpDesignationID">
+                            <option value="">Select Designation</option>
+                            <option value="1">Manager</option>
+                            <option value="2">Executive</option>
+                            <option value="3">Developer</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Joining Date <span class="req">*</span></label>
+                        <input type="text" class="form-control" id="EmpJoiningDate" placeholder="Select date" autocomplete="off" />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Login Access</label>
+                        <div class="login-switch-box">
+                            <div>
+                                <div class="fw-semibold small">Can Login</div>
+                                <div class="text-muted" style="font-size:0.75rem;">Portal access dena hai?</div>
+                            </div>
+                            <div class="form-check form-switch mb-0">
+                                <input class="form-check-input" type="checkbox" id="EmpCanLogin" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bank Details -->
+            <div class="section-block mb-4">
+                <div class="section-heading">
+                    <div class="icon-badge"><i class="fa-solid fa-building-columns"></i></div>
+                    <h6>Bank Details</h6>
+                </div>
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <label class="form-label">Bank</label>
+                        <select class="form-select" id="BankId">
+                            <option value="">Select Bank</option>
+                            <option value="1">HDFC</option>
+                            <option value="2">SBI</option>
+                            <option value="3">ICICI</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">IFSC</label>
+                        <input class="form-control text-uppercase" id="EmpBankIFSC" placeholder="e.g. HDFC0001234" />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Account Number</label>
+                        <input class="form-control" id="EmpBankAccount" placeholder="Account number" />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">PF UAN</label>
+                        <input class="form-control" id="EmpPFUAN" placeholder="Optional" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">ESI Code</label>
+                        <input class="form-control" id="EmpESICode" placeholder="Optional" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="reset" class="btn btn-reset-clean" id="btnReset">
+                    <i class="fa-solid fa-rotate-left me-1"></i> Reset
+                </button>
+                <button type="button" class="btn btn-save-grad" id="btnSave">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    <span id="btnSaveText">Create Employee</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Flatpickr (date picker) JS -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+@section Scripts {
+    <script>
+        $(function () {
+
+        // ---- Date pickers ----
+        flatpickr("#EmpDOB", {
+        dateFormat: "Y-m-d",
+        altInput: true,
+        altFormat: "d M Y",
+        maxDate: "today" // DOB can't be in the future
+        });
+        flatpickr("#EmpJoiningDate", {
+        dateFormat: "Y-m-d",
+        altInput: true,
+        altFormat: "d M Y",
+        maxDate: "today" // DOB can't be in the future
+        });
+
+
+        // ---- Input restrictions ----
+        $("#EmpAadhar").on("input", function () {
+        this.value = this.value.replace(/\D/g, '').slice(0, 12);
+        });
+        $("#EmpContact").on("input", function () {
+        this.value = this.value.replace(/\D/g, '').slice(0, 10);
+        });
+        $("#EmpPAN, #EmpBankIFSC").on("input", function () {
+        this.value = this.value.toUpperCase();
+        });
+
+        // ---- Save ----
+        $("#btnSave").click(function () {
+
+        var employee = {
+        EmpFName: $("#EmpFName").val(),
+        EmpMName: $("#EmpMName").val(),
+        EmpLName: $("#EmpLName").val(),
+        EmpDOB: $("#EmpDOB").val(),
+        EmpEmail: $("#EmpEmail").val(),
+        EmpContact: $("#EmpContact").val(),
+        EmpPAN: $("#EmpPAN").val(),
+        EmpAadhar: $("#EmpAadhar").val(),
+        EmpDesignationID: parseInt($("#EmpDesignationID").val()) || 0,
+        EmpJoiningDate: $("#EmpJoiningDate").val(),
+        EmpCanLogin: $("#EmpCanLogin").is(":checked"),
+        BankId: parseInt($("#BankId").val()) || 0,
+        EmpBankIFSC: $("#EmpBankIFSC").val(),
+        EmpBankAccount: $("#EmpBankAccount").val(),
+        EmpESICode: $("#EmpESICode").val(),
+        EmpPFUAN: $("#EmpPFUAN").val(),
+        CreatedBy: 1
+        };
+
+        if (!employee.EmpFName || !employee.EmpLName || !employee.EmpEmail || !employee.EmpContact) {
+        an.error("Please fill all required fields.");
+        return;
+        }
+
+        var btn = $("#btnSave");
+        btnLdr.Start(btn);
+
+        $.ajax({
+        url: '/Employee/Create',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(employee),
+        success: function (response) {
+        btnLdr.Stop(btn);
+
+        if (response.isError === 0) {
+        an.success(response.message + " Employee Code: " + response.empCode);
+        $("#employeeForm")[0].reset();
+        } else {
+        an.error(response.message);
+        }
+        },
+        error: function (xhr) {
+        btnLdr.Stop(btn);
+        var msg = "Something went wrong.";
+        if (xhr.responseJSON && xhr.responseJSON.message) {
+        msg = xhr.responseJSON.message;
+        }
+        an.error(msg);
+        }
+        });
+        });
+        });
+    </script>
+}

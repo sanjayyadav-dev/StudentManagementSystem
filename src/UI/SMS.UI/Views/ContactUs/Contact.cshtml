@@ -1,0 +1,209 @@
+﻿@{
+    ViewData["Title"] = "Contact Us";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<style>
+    .contact-hero {
+        background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+        border-radius: 16px;
+        padding: 50px 40px;
+        color: #fff;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    .contact-info-card {
+        background: #fff;
+        border-radius: 14px;
+        padding: 24px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        text-align: center;
+        height: 100%;
+        transition: transform 0.25s ease;
+    }
+
+        .contact-info-card:hover {
+            transform: translateY(-6px);
+        }
+
+    .contact-icon {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        background: rgba(67, 97, 238, 0.1);
+        color: #4361ee;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        margin: 0 auto 14px;
+    }
+
+    .contact-form-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 40px;
+        box-shadow: 0 4px 25px rgba(0,0,0,0.08);
+    }
+
+        .contact-form-card .form-control,
+        .contact-form-card .form-select {
+            border-radius: 10px;
+            padding: 12px 14px;
+            border: 1px solid #e2e5ec;
+        }
+
+            .contact-form-card .form-control:focus,
+            .contact-form-card .form-select:focus {
+                border-color: #4361ee;
+                box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.12);
+            }
+
+    .btn-send {
+        background: #4361ee;
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        padding: 12px 32px;
+        font-weight: 600;
+        transition: background 0.2s ease;
+    }
+
+        .btn-send:hover {
+            background: #3a0ca3;
+            color: #fff;
+        }
+
+    .map-box {
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        height: 100%;
+        min-height: 300px;
+    }
+
+        .map-box iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            border: 0;
+        }
+</style>
+
+<div class="container py-4">
+
+    <!-- Hero -->
+    <div class="contact-hero" style="margin-top:80px">
+        <h1 class="fw-bold mb-2">Get In Touch</h1>
+        <p class="mb-0" style="opacity:0.9;">Koi sawal ho ya feedback dena ho — hum sunne ke liye yahan hain.</p>
+    </div>
+
+    <!-- Contact Info Cards -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="contact-info-card">
+                <div class="contact-icon">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <h6 class="fw-bold mb-1">Our Office</h6>
+                <p class="text-muted small mb-0">123, Tech Park, Gomti Nagar,<br>Lucknow, Uttar Pradesh, India</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="contact-info-card">
+                <div class="contact-icon">
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+                <h6 class="fw-bold mb-1">Call Us</h6>
+                <p class="text-muted small mb-0">+91 98765 43210<br>Mon–Sat, 9 AM – 6 PM</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="contact-info-card">
+                <div class="contact-icon">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <h6 class="fw-bold mb-1">Email Us</h6>
+                <p class="text-muted small mb-0">support@smsapp.com<br>info@smsapp.com</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form + Map -->
+    <div class="row g-4">
+        <div class="col-lg-7">
+            <div class="contact-form-card">
+                <h4 class="fw-bold mb-1">Send Us a Message</h4>
+                <p class="text-muted small mb-4">Form fill karo, hum jald hi reply karenge.</p>
+
+                <form id="contactForm">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold">Full Name</label>
+                            <input type="text" class="form-control" name="FullName" placeholder="Your name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold">Email</label>
+                            <input type="email" class="form-control" name="Email" placeholder="you@example.com" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold">Phone</label>
+                            <input type="text" class="form-control" name="Phone" placeholder="10-digit mobile number">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold">Subject</label>
+                            <select class="form-select" name="Subject">
+                                <option>General Inquiry</option>
+                                <option>Technical Support</option>
+                                <option>Sales</option>
+                                <option>Feedback</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label small fw-semibold">Message</label>
+                            <textarea class="form-control" name="Message" rows="5" placeholder="Apna message likho..." required></textarea>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-send">
+                                <i class="fa-solid fa-paper-plane me-2"></i>Send Message
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-lg-5">
+            <div class="map-box">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.5!2d80.9462!3d26.8467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#contactForm').on('submit', function (e) {
+                e.preventDefault();
+
+                $.post('/Home/ContactUs', $(this).serialize())
+                    .done(function (res) {
+                        if (res.success) {
+                            alert('Message sent successfully!');
+                            $('#contactForm')[0].reset();
+                        } else {
+                            alert(res.message || 'Something went wrong.');
+                        }
+                    })
+                    .fail(function () {
+                        alert('Server error. Please try again.');
+                    });
+            });
+        });
+    </script>
+}
