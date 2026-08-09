@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SMS.API.Controllers.BaseAdminAuth;
 using SMS.UI.Models.EmployeeModel;
 using System.Net.Http.Json;
 
 namespace SMS.UI.Controllers
 {
-    public class EmployeeController : Controller
+    public class EmployeeController : BaseAdminController
     {
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly ILogger<EmployeeController> _logger;

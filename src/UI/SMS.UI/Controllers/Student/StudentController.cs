@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SMS.API.Controllers.BaseAdminAuth;
 using SMS.Core.Managers;
 using SMS.UI.Models.StudentModel;
 using System.Text.Json;
 
 namespace SMS.UI.Controllers.Student
 {
-    public class StudentController : Controller
+    public class StudentController : BaseAdminController
     {
         private readonly IHttpClientFactory _httpClientFactory;
 

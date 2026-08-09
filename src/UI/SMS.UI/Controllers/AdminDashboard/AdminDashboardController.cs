@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SMS.API.Controllers.BaseAdminAuth;
 
 namespace SMS.UI.Controllers.AdminDashbord
 {
-    public class AdminDashboardController : Controller
+    public class AdminDashboardController : BaseAdminController
     {
         public IActionResult Index()
         {
