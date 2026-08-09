@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using SMS.Core.Contracts;
+using SMS.Core.DTOs.BlodGoupModel;
 using SMS.Core.DTOs.Student;
 using SMS.Core.Interfaces.StudentInterface;
 using SMS.Core.Procedures.StudentDL;
@@ -55,5 +56,11 @@ namespace SMS.Core.Managers.StudentManager
 
             return result;
         }
+        public object GetAllBlodGrupInDdl()
+        {
+            var proc = new Proc_GetBloodGroups(_iDAL);
+            return proc.Call();
+        }
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SMS.Core.DTOs.BlodGoupModel;
 using SMS.Core.DTOs.Student;
 using SMS.Core.Interfaces.StudentInterface;
 using SMS.Core.Managers.StudentManager;
@@ -22,6 +23,12 @@ namespace SMS.API.Controllers.Student
         {
             var result = _studentManager.Create(request);
             if (result.IsError == 1) return BadRequest(result);
+            return Ok(result);
+        }
+        [HttpGet("blood-groups")]
+        public IActionResult GetAllBlodGrupInDdl()
+        {
+            var result = _studentManager.GetAllBlodGrupInDdl();
             return Ok(result);
         }
     }

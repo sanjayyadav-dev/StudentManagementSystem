@@ -7,7 +7,8 @@ using Microsoft.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Dapper;   // ✅ YE LINE ADD KARO
+using Dapper;
+using SMS.Core.Managers;   // ✅ YE LINE ADD KARO
 
 namespace SMS.Infrastructure
 {
@@ -45,6 +46,12 @@ namespace SMS.Infrastructure
             using var connection = CreateConnection();
             return connection.Execute(
                 procName, parameters, commandType: CommandType.StoredProcedure);
+        }
+        public IEnumerable<T> GetListByProcedure<T>(Response res)
+        {
+            using var connection = CreateConnection();
+            return connection.Query<T>(
+                res.Name, commandType: CommandType.StoredProcedure);
         }
     }
 }

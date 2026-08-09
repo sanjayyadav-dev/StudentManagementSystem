@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SMS.Core.Managers;
 using SMS.UI.Models.StudentModel;
 using System.Text.Json;
 
@@ -56,6 +57,29 @@ namespace SMS.UI.Controllers.Student
             }
 
             var result = JsonSerializer.Deserialize<CreateStudentResponse>(responseBody, options);
+            return Json(result);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetAllBlodGrupInDdl()
+        {
+            var client = _httpClientFactory.CreateClient("SMSApi");
+            var response = await client.GetAsync("api/student/blood-groups");
+
+            var responseBody = await response.Content.ReadAsStringAsync();
+
+            if (string.IsNullOrWhiteSpace(responseBody))
+            {
+                return Json(new { isError = 1, message = $"API returned empty response. Status: {response.StatusCode}" });
+            }
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return Json(new { isError = 1, message = $"API Error ({(int)response.StatusCode}): {responseBody}" });
+            }
+
+            var options = new System.Text.Json.JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+            var result = System.Text.Json.JsonSerializer.Deserialize<object>(responseBody, options);
+
             return Json(result);
         }
     }
